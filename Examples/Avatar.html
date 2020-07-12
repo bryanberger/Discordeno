@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Avatar Command</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.8fbd8908.css" as="style"><link rel="preload" href="/assets/js/app.8a094ea9.js" as="script"><link rel="preload" href="/assets/js/2.472b75a9.js" as="script"><link rel="preload" href="/assets/js/11.d5b58af4.js" as="script"><link rel="prefetch" href="/assets/js/10.d77a452e.js"><link rel="prefetch" href="/assets/js/12.f097411f.js"><link rel="prefetch" href="/assets/js/13.0d37d5bb.js"><link rel="prefetch" href="/assets/js/14.cceabbf1.js"><link rel="prefetch" href="/assets/js/15.727699e6.js"><link rel="prefetch" href="/assets/js/16.0566c353.js"><link rel="prefetch" href="/assets/js/17.6f893cf9.js"><link rel="prefetch" href="/assets/js/18.c8c27392.js"><link rel="prefetch" href="/assets/js/19.eac246ad.js"><link rel="prefetch" href="/assets/js/20.8e12b935.js"><link rel="prefetch" href="/assets/js/21.af31d6e5.js"><link rel="prefetch" href="/assets/js/22.3d2593a1.js"><link rel="prefetch" href="/assets/js/23.e4c8561a.js"><link rel="prefetch" href="/assets/js/24.10d7bf27.js"><link rel="prefetch" href="/assets/js/3.0601f710.js"><link rel="prefetch" href="/assets/js/4.2b7fc900.js"><link rel="prefetch" href="/assets/js/5.e9b3d371.js"><link rel="prefetch" href="/assets/js/6.d9428af4.js"><link rel="prefetch" href="/assets/js/7.3191280c.js"><link rel="prefetch" href="/assets/js/8.8a2da8a1.js"><link rel="prefetch" href="/assets/js/9.2b4a8a5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8fbd8908.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="avatar-command"><a href="#avatar-command" class="header-anchor">#</a> Avatar Command</h1> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// This command is intentionally different from other commands to show that they can also be done this way.</span>
+<span class="token comment">// This is the ideal way because it will give you automated typings.</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> botCache <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../mod.ts&quot;</span><span class="token punctuation">;</span>
+
+botCache<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">avatar</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">message<span class="token punctuation">,</span> _args<span class="token punctuation">,</span> guild</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> member <span class="token operator">=</span> message<span class="token punctuation">.</span>mentions<span class="token punctuation">.</span>length
+      <span class="token operator">?</span> message<span class="token punctuation">.</span><span class="token function">mentions</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+      <span class="token operator">:</span> message<span class="token punctuation">.</span><span class="token function">member</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> message<span class="token punctuation">.</span>channel<span class="token punctuation">.</span><span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      embed<span class="token operator">:</span> <span class="token punctuation">{</span>
+        author<span class="token operator">:</span> <span class="token punctuation">{</span>
+          name<span class="token operator">:</span> member<span class="token punctuation">.</span>tag<span class="token punctuation">,</span>
+          icon_url<span class="token operator">:</span> member<span class="token punctuation">.</span><span class="token function">avatarURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        image<span class="token operator">:</span> <span class="token punctuation">{</span>
+          url<span class="token operator">:</span> member<span class="token punctuation">.</span><span class="token function">avatarURL</span><span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.8a094ea9.js" defer></script><script src="/assets/js/2.472b75a9.js" defer></script><script src="/assets/js/11.d5b58af4.js" defer></script>
+  </body>
+</html>
