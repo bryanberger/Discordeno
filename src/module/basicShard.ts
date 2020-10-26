@@ -116,6 +116,9 @@ export async function createBasicShard(
     if (typeof message === "string") {
       const data = JSON.parse(message);
       if (!data.t) eventHandlers.rawGateway?.(data);
+
+      console.log('raw opcodes', new Date().toUTCString(), data.op);
+
       switch (data.op) {
         case GatewayOpcode.Hello:
           if (!heartbeating.has(basicShard.id)) {
