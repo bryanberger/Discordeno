@@ -127,6 +127,15 @@ export async function createBasicShard(
           }
           break;
         case GatewayOpcode.HeartbeatACK:
+          eventHandlers.debug?.(
+            {
+              type: "heartbeatAck",
+              data: {
+                shardID: basicShard.id,
+                previousSequenceNumber: basicShard.previousSequenceNumber,
+              },
+            },
+          );
           heartbeating.set(shardID, true);
           break;
         case GatewayOpcode.Reconnect:

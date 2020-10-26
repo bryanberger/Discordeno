@@ -65,6 +65,7 @@ export interface DebugArg {
     | "requestMembersProcessing"
     | "heartbeat"
     | "heartbeatStopped"
+    | "heartbeatAck"
     | "createShard"
     | "invalidSession"
     | "reconnect"
